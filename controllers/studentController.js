@@ -13,7 +13,7 @@ export const createStudent = async (req, res) => {
       parentId: req.user._id
     });
 
-    res.status(201).json({
+    res.status(200).json({
       message: "Student created",
       student
     });
