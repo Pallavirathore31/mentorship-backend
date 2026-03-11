@@ -131,3 +131,7 @@ Start the server: npm run dev
 ##Server will start at:
 
 http://localhost:5000
+
+#swagger link for api testing 
+
+http://localhost:5000/api-docs/#/
