@@ -296,7 +296,7 @@ const swaggerSpec = {
         tags: ["LLM"],
         summary: "Summarize text",
         description:
-          "Summarize the provided text into 3–6 bullet points (under 120 words). This endpoint is public (no JWT required) but rate-limited.",
+          "Summarize the provided text into 3–6 bullet points (under 120 words). This endpoint is public (no JWT required) but rate-limited. The backend uses Gemini by default; you can optionally configure an OpenAI fallback via environment variables.",
         security: [],
         requestBody: {
           required: true,
@@ -328,7 +328,7 @@ const swaggerSpec = {
                   type: "object",
                   properties: {
                     summary: { type: "string", description: "Generated summary text" },
-                    model: { type: "string", description: "LLM model name", example: "gemini-1.5-flash" },
+                    model: { type: "string", description: "LLM model name", example: "gemini-2.0-flash" },
                   },
                 },
               },
@@ -336,6 +336,7 @@ const swaggerSpec = {
           },
           400: { description: "Text is required / Text must be at least 50 characters" },
           413: { description: "Text too large" },
+          429: { description: "LLM quota exceeded (rate limit / billing / plan issue)" },
           502: { description: "LLM service error" },
         },
       },
